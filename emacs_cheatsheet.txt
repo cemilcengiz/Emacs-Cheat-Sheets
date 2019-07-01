@@ -1,0 +1,146 @@
+### Emacs 26 daemon facility, allowing faster emacs start up time:
+# Start emacs daemon. Normally, you need to this only once when you first open emacs. Afterwards, it is not needed until emacs and its dameon is completely closed.
+emacs --daemon
+
+# Return to emacs. To be able to use this, need to have an emacs daemon opened before. -nw option for textual mode(i.e. non graphics).
+emacsclient -nw -c
+
+# Set alias for emacs client since it is used frequently.
+alias emc='emacsclient -nw -c'
+
+### General emacs shortcuts:
+#Kill buffer:
+C-x k
+
+# Save current buffer
+C-x s
+
+# Save all edited buffers
+C-x C-s
+
+# Regex I-search(forward):
+C-s
+
+# Regex I-search(backward):
+C-r
+
+# Switch buffer:
+C-x b
+
+# See active buffers:
+C-x C-b
+
+# Undo
+C-_
+
+# Redo
+C-g C-_
+
+
+### elpy IDE Features & elpy mode shortcuts:
+(adapted from following sources:
+https://realpython.com/emacs-the-best-python-editor/
+http://onthecode.com/post/2014/03/06/emacs-on-steroids-for-python-elpy-el.html
+https://elpy.readthedocs.io/en/latest/ide.html)
+
+
+## Projects
+Search the files in the current project for a string.
+C-c C-s (elpy-rgrep-symbol)
+
+
+## Completion
+# Provide completion suggestions for a completion at point.
+C-M i (elpy-company-backend)
+You can use cursor keys or M-n and M-p to scroll through the options,
+RET to use the selected completion, or TAB to complete the common part.
+On any completion option, C-d or <f1> will display a temporary window with documentation.
+C-w will display a temporary window showing the source code of the completion to get some context.
+
+
+## Navigation
+# Go to the location where the identifier at point is defined:
+M-. (elpy-goto-definition)
+
+# Same as elpy-go-to-definition (with the same caveats) but goes to the
+definition of the symbol at point in other window, if defined.
+C-x 4 M-. (elpy-goto-definition-other-window)
+
+# Go back to the last place where M-. was used.
+M-* (pop-tag-mark)
+We can effectively turn M-. and M-* into a forward and backward motion for definition lookups. 
+
+# Search the buffer for a list of definitions of classes and functions.
+C-c C-o (elpy-occur-definitions)
+
+# Find references for an identifier of the current buffer.
+M-? (xref-find-references)
+
+
+## The Shell Buffer
+# First need to open a python process because of a mysterious bug I encounter.
+If the python(or jupyter) interpreter process is killed, need to open it again manually.
+M-x run-python
+
+# Switch to buffer with a Python interpreter running.
+The same command is used to go back to the caller buffer.
+C-c C-z (elpy-shell-switch-to-shell)
+
+# Attaches a dedicated python shell (not shared with the other python buffers)
+ to the current python buffer.
+M-x elpy-shell-toggle-dedicated-shell
+
+# Kill the associated python shell.
+C-c C-k (elpy-shell-kill)
+
+# Kill all active python shells.
+C-c C-K (elpy-shell-kill-all)
+
+ 
+## Evaluating code fragments
+# Send the the active region (if any) or the entire buffer (otherwise) to
+the Python shell and keep point position.
+C-c C-y r (elpy-shell-send-region-or-buffer)
+Also bound to C-c C-c
+Warning: Start a python process before executing code,
+         by typing M-x run-python
+
+
+## Documentation
+# Show documentation in a new frame (elpy-doc):
+C-c C-d
+
+
+## Debugging
+# Run pdb on the current buffer
+C-c C-g g (elpy-pdb-debug-buffer)
+
+# Add or remove a break point
+C-c C-g b (elpy-pdb-toggle-breakpoint-at-point)
+
+# Run pdb on the current buffer and pause at the cursor position.
+C-c C-g p (elpy-pdb-break-at-point)
+
+
+## Testing
+# Start a test run. This uses the currently configured test runner to discover and run tests.
+C-c C-t (elpy-test)
+
+
+## Refactoring
+# Edit all occurrences of the symbol at point at once.
+ C-c C-e (elpy-multiedit-python-symbol-at-point)
+
+# Format code using the available formatter(using yapf , autopep8 or black):
+ C-c C-r f (elpy-format-code)
+
+# Run the Elpy refactoring interface for Python code.
+ C-c C-r r (elpy-refactor)
+
+# Simultaneous editing of a variable with multiple occurrence:
+C-c o
+(Press C-g to finish)
+
+
+
+
