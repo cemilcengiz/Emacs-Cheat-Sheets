@@ -36,6 +36,12 @@ C-_
 # Redo
 C-g C-_
 
+# Move to the top of the buffer (beginning-of-buffer)
+M-<
+
+# Move to the end of the buffer (end-of-buffer)
+M->
+
 
 ### elpy IDE Features & elpy mode shortcuts:
 (adapted from following sources:
