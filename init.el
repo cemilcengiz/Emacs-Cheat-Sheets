@@ -12,7 +12,6 @@
 
 (defvar myPackages
   '(better-defaults
-    ;ein
     elpy
     flycheck
     material-theme
