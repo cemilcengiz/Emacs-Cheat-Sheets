@@ -15,6 +15,10 @@ C-x k
 # Save current buffer
 C-x s
 
+# Insert or realign comment on current line, if the region is active, comment 
+  or uncomment the region instead (comment-dwim)
+M-;
+
 # Save all edited buffers
 C-x C-s
 
