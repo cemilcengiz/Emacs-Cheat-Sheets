@@ -1,3 +1,9 @@
+### Setting up the remote server for IDE features such as autocompletion, documentation etc.
+# Apparently, X11 forwarding is needed to get some of the features.
+# Connect to the cluster via "ssh -X userID@server" command.
+# Check below for further details on X11 forwarding.
+# https://unix.stackexchange.com/questions/12755/how-to-forward-x-over-ssh-to-run-graphics-applications-remotely
+
 ### Emacs 26 daemon facility, allowing faster emacs start up time:
 # Start emacs daemon. Normally, you need to this only once when you first open emacs. Afterwards, it is not needed until emacs and its dameon is completely closed.
 emacs --daemon
