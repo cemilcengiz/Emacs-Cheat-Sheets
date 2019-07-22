@@ -158,5 +158,25 @@ C-c o
 (Press C-g to finish)
 
 
+## Moving By Indentation
+#
+C-down (elpy-nav-forward-block)
+C-up (elpy-nav-backward-block)
+These commands are used to navigate between lines with same indentation as the current line.
+Use C-down to move forward or C-up to move backward.
 
+#
+C-left (elpy-nav-backward-indent)
+C-right (elpy-nav-forward-indent)
+These commands are used to navigate between indentation levels. C-left moves point to previous
+indent level or over previous word. C-right moves point to next indent level or over the next word.
 
+## Moving the Current Region
+# Move one line up or down
+M-down (elpy-nav-move-line-or-region-down)
+M-up (elpy-nav-move-line-or-region-up)
+
+# Shift code block (or the current line if no region is selected) to right or left by one indentation level.
+(i.e. to indent or deindent)
+M-left (elpy-nav-indent-shift-left)
+M-right (elpy-nav-indent-shift-right)
