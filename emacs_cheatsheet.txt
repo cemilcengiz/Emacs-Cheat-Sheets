@@ -92,6 +92,14 @@ C-c C-o (elpy-occur-definitions)
 # Find references for an identifier of the current buffer.
 M-? (xref-find-references)
 
+## Syntax Checking
+# Full syntax check whose output is a displayed on an interactive new buffer, 
+which allows jumping to errors(or warnings) as desired.
+C-c C-v (elpy-check)
+
+# Syntax check and navigate on the errors one by one.
+C-c C-n (elpy-flymake-next-error)
+C-c C-p (elpy-flymake-previous-error)
 
 ## The Shell Buffer
 # First need to open a python process because of a mysterious bug I encounter.
