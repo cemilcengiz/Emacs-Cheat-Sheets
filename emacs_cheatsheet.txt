@@ -52,6 +52,16 @@ M-<
 # Move to the end of the buffer (end-of-buffer)
 M->
 
+## String replacement
+# Query replace
+M-%
+e.g: M-% foo <RET> bar <RET>
+This command finds occurrences of 'foo' one by one, displays each occurrence and asks you 
+whether to replace it with 'bar'.
+
+# Replace string
+M-x replace-string <RET> string <RET> newstring <RET>
+Similar to query replace, but replaces all occurrences of the queried(i.e. first) string.
 
 ### elpy IDE Features & elpy mode shortcuts:
 (adapted from following sources:
