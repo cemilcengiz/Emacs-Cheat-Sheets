@@ -65,6 +65,23 @@ press C-g to stop replacement.
 M-x replace-string <RET> string <RET> newstring <RET>
 Similar to query replace, but replaces all occurrences of the queried(i.e. first) string.
 
+## Gettng help (source: <https://stackoverflow.com/questions/965263/given-an-emacs-command-name-how-would-you-find-key-bindings-and-vice-versa>)
+# Help on getting help
+C-h ?
+
+# To just find key bindings for a command, you can use emacs help's "where-is" feature:
+C-h w command-name
+
+# To find the command, given a key sequence:
+C-h k key-sequence
+
+# To get detailed information about a command:
+C-h f function-name
+
+# To get detailed information about a function, including any key bindings for it:
+C-h f variable-name
+
+
 ### elpy IDE Features & elpy mode shortcuts:
 (adapted from following sources:
 https://realpython.com/emacs-the-best-python-editor/
