@@ -1,3 +1,9 @@
+### Setting up the remote server for IDE features such as autocompletion, documentation etc.
+# Apparently, X11 forwarding is needed to get some of the features.
+# Connect to the cluster via "ssh -X userID@server" command.
+# Check below for further details on X11 forwarding.
+# https://unix.stackexchange.com/questions/12755/how-to-forward-x-over-ssh-to-run-graphics-applications-remotely
+
 ### Emacs 26 daemon facility, allowing faster emacs start up time:
 # Start emacs daemon. Normally, you need to this only once when you first open emacs. Afterwards, it is not needed until emacs and its dameon is completely closed.
 emacs --daemon
@@ -46,6 +52,35 @@ M-<
 # Move to the end of the buffer (end-of-buffer)
 M->
 
+## String replacement
+# Query replace 
+M-x query-replace
+shortcut: M-%
+e.g: M-% foo <RET> bar <RET>
+This command finds occurrences of 'foo' one by one, displays each occurrence and asks you 
+whether to replace it with 'bar'. Press y to accept replacement, n to decline. When you finish,
+press C-g to stop replacement.
+
+# Replace string
+M-x replace-string <RET> string <RET> newstring <RET>
+Similar to query replace, but replaces all occurrences of the queried(i.e. first) string.
+
+## Gettng help (source: <https://stackoverflow.com/questions/965263/given-an-emacs-command-name-how-would-you-find-key-bindings-and-vice-versa>)
+# Help on getting help
+C-h ?
+
+# To just find key bindings for a command, you can use emacs help's "where-is" feature:
+C-h w command-name
+
+# To find the command, given a key sequence:
+C-h k key-sequence
+
+# To get detailed information about a command:
+C-h f function-name
+
+# To get detailed information about a function, including any key bindings for it:
+C-h f variable-name
+
 
 ### elpy IDE Features & elpy mode shortcuts:
 (adapted from following sources:
@@ -86,6 +121,14 @@ C-c C-o (elpy-occur-definitions)
 # Find references for an identifier of the current buffer.
 M-? (xref-find-references)
 
+## Syntax Checking
+# Full syntax check whose output is a displayed on an interactive new buffer, 
+which allows jumping to errors(or warnings) as desired.
+C-c C-v (elpy-check)
+
+# Syntax check and navigate on the errors one by one.
+C-c C-n (elpy-flymake-next-error)
+C-c C-p (elpy-flymake-previous-error)
 
 ## The Shell Buffer
 # First need to open a python process because of a mysterious bug I encounter.
@@ -152,5 +195,25 @@ C-c o
 (Press C-g to finish)
 
 
+## Moving By Indentation
+#
+C-down (elpy-nav-forward-block)
+C-up (elpy-nav-backward-block)
+These commands are used to navigate between lines with same indentation as the current line.
+Use C-down to move forward or C-up to move backward.
 
+#
+C-left (elpy-nav-backward-indent)
+C-right (elpy-nav-forward-indent)
+These commands are used to navigate between indentation levels. C-left moves point to previous
+indent level or over previous word. C-right moves point to next indent level or over the next word.
 
+## Moving the Current Region
+# Move one line up or down
+M-down (elpy-nav-move-line-or-region-down)
+M-up (elpy-nav-move-line-or-region-up)
+
+# Shift code block (or the current line if no region is selected) to right or left by one indentation level.
+(i.e. to indent or deindent)
+M-left (elpy-nav-indent-shift-left)
+M-right (elpy-nav-indent-shift-right)
