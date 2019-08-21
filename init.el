@@ -28,7 +28,8 @@
 (advice-add 'python-mode :before 'elpy-enable)
 (elpy-enable)
 ;; jedi backend for elpy. Apparently, jedi has larger coverage than rope.
- (setq elpy-rpc-backend "jedi")  
+;; (setq elpy-rpc-backend "jedi")
+;; (setq elpy-rpc-backend "rope")
 ;; Fixing a key binding bug in elpy
 ;; (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ;; Fixing another key binding bug in iedit mode
@@ -43,8 +44,9 @@
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; Activates auto-formatting when the buffer is saved
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; Need to type "M-x run-python" to get the interactive kernel working
 (setq python-shell-interpreter "jupyter"
@@ -97,12 +99,10 @@
  ;; If there is more than one, they won't work right.
  )
 
-
 ;;
 ;;Linum Mode
 ;(add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook '(lambda () (nlinum-mode t)))
-
 
 ;;
 ;; C set tab offset to 4
@@ -115,6 +115,17 @@
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
+;; hide the startup message
+(setq inhibit-startup-message t)
 
-(setq inhibit-startup-message t) ;; hide the startup message
+;; Prevent emacs from appending new line to the end of buffer.
+(setq mode-require-final-newline nil)
 
+;; ediff configs
+;; To make ediff operate on selected-frame use the following:
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; To make ediff to be horizontally split use
+(setq ediff-split-window-function 'split-window-horizontally)
+;; to restore the old window configuration, e.g. killing diffed buffers after ediff
+(winner-mode)
+(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
