@@ -46,6 +46,22 @@ C-_
 # Redo
 C-g C-_
 
+# Search text in a file or directory
+M-x rgrep
+
+# ediff: Compare code and find differences
+# Compare two different buffers
+M-x ediff-buffers
+
+# Compare two files
+M-x ediff-files
+
+# Compare two different (git) revision
+M-x ediff-revision
+
+# Compares files that have the same name in both. 
+M-x ediff-directories
+
 # Move to the top of the buffer (beginning-of-buffer)
 M-<
 
