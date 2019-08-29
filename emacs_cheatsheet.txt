@@ -15,6 +15,13 @@ emacsclient -nw -c
 alias emc='emacsclient -nw -c'
 
 ### General emacs shortcuts:
+# Start a shell
+M-x shell
+
+# To start second (or more) shell
+C-u M-x shell
+(it will ask for a name for the new shell)
+
 #Kill buffer:
 C-x k
 
